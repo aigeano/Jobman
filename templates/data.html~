@@ -1,0 +1,25 @@
+ <html lang="en">
+  <head>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+	<h3 class="text-muted">JobMan</h3>
+      </div>
+      <hr/>
+      <h2>JobMan</h2>
+      
+	<table class="table">
+{% for value in data.result %}
+   <tr>
+        
+        <td> {{ value }} </td>
+   </tr>
+{% endfor %}
+</table>
+      
+      <a href="javascript:history.go(-1)">Submit another query </a>
+    </div>
+  </body>
+</html>
