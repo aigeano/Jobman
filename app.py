@@ -6,10 +6,9 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-        for index in range(1,255):
             res= []
             data = json.load(open("filtered.json"))
-            fil = ['developer','technical','engineer','testing']
+            fil =['developer','technical','engineer','testing','mobile','ios','android']
 
 	    errors = ''
 	    if request.method == "GET":
@@ -25,14 +24,15 @@ def index():
                     count = 0 
                     res= []
                     for n in range(5750):
-                            if k in data[n]['title'].lower() or k in data[n]['description'].lower():
-                                    t =data[n]['title'].lower()
-                                    if fil[0] not in t and fil[1] not in t and fil[2] not in t and fil[3] not in t :
+                           
+                            t =data[n]['title'].lower()
+                            if k in data[n]['title'].lower():
+                                    if fil[0] not in t and fil[1] not in t and fil[2] not in t and fil[3] not in t and fil[4] not in t and fil[5] not in t and fil[6] not in t :
                                             res.append( "job id: " + str(data[n]['id']) + " Job Title-> " + data[n]['title'])
                                             count = count + 1
                     if count==0:
                             res.append( "No matches found for "+ k)
-                        
+             
             elif loc and not key :
                     l = loc.lower()
                     count = 0
@@ -42,7 +42,7 @@ def index():
                             for i in range(len(data[n]['tags'])):
                                     if 'LocationTag' in data[n]['tags'][i]['tag_type']:
                                             if l in data[n]['tags'][i]['name']:
-                                                    if fil[0] not in t and fil[1] not in t and fil[2] not in t and fil[3] not in t :
+                                                    if fil[0] not in t and fil[1] not in t and fil[2] not in t and fil[3] not in t and fil[4] not in t and fil[5] not in t and fil[6] not in t:
                                                             res.append( "job id: " + str(data[n]['id']) + " and Job Title-> " + data[n]['title'])
                                                             count = count +1
                     if count == 0 :
@@ -58,8 +58,8 @@ def index():
                             for i in range(len(data[n]['tags'])):
                                     if 'LocationTag' in data[n]['tags'][i]['tag_type']:
                                             if b in data[n]['tags'][i]['name']:
-                                                    if a in data[n]['title'].lower() or a in data[n]['description'].lower():
-                                                            if fil[0] not in t and fil[1] not in t and fil[2] not in t and fil[3] not in t :
+                                                    if a in data[n]['title'].lower():
+                                                            if fil[0] not in t and fil[1] not in t and fil[2] not in t and fil[3] not in t and fil[4] not in t and fil[5] not in t and fil[6] not in t:
                                                                     res.append( "job id: " + str(data[n]['id']) + " and Job Title-> " + data[n]['title'])
                                                                     count = count + 1
                     if count == 0 :
@@ -70,7 +70,7 @@ def index():
                    res = []
                    for n in range(5750):
                            t = data[n]['title'].lower()
-                           if fil[0] not in t and fil[1] not in t and fil[2] not in t and fil[3] not in t :
+                           if fil[0] not in t and fil[1] not in t and fil[2] not in t and fil[3] not in t and fil[4] not in t and fil[5] not in t and fil[6] not in t:
                                    res.append( "job id: " + str(data[n]['id']) + "and Job Title-> " + data[n]['title'])
                     
              		
