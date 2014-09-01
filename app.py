@@ -35,13 +35,14 @@ def index():
              
             elif loc and not key :
                     l = loc.lower()
+                    l = l.split(',',1)[0]
                     count = 0
                     res = []
                     for n in range(5750):
                             t = data[n]['title'].lower()
                             for i in range(len(data[n]['tags'])):
                                     if 'LocationTag' in data[n]['tags'][i]['tag_type']:
-                                            if l in data[n]['tags'][i]['name']:
+                                            if l in data[n]['tags'][i]['name'].lower():
                                                     if fil[0] not in t and fil[1] not in t and fil[2] not in t and fil[3] not in t and fil[4] not in t and fil[5] not in t and fil[6] not in t:
                                                             res.append( "job id: " + str(data[n]['id']) + " and Job Title-> " + data[n]['title'])
                                                             count = count +1
@@ -51,13 +52,15 @@ def index():
             elif loc and key :
 	            a = key.lower()
                     b = loc.lower()
+
+                    b = b.split(',',1)[0]
                     count = 0 
                     res = []
                     for n in range(5750):
                             t = data[n]['title'].lower()
                             for i in range(len(data[n]['tags'])):
                                     if 'LocationTag' in data[n]['tags'][i]['tag_type']:
-                                            if b in data[n]['tags'][i]['name']:
+                                            if b in data[n]['tags'][i]['name'].lower():
                                                     if a in data[n]['title'].lower():
                                                             if fil[0] not in t and fil[1] not in t and fil[2] not in t and fil[3] not in t and fil[4] not in t and fil[5] not in t and fil[6] not in t:
                                                                     res.append( "job id: " + str(data[n]['id']) + " and Job Title-> " + data[n]['title'])
